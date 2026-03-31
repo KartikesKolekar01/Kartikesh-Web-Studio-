@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>WebWizard | Freelance Website Developer</title>
+  <!-- Bootstrap 5 CSS + Icons + Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Poppins for clean look -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      background-color: #fefefe;
+      scroll-behavior: smooth;
+    }
+    /* custom button hover & transitions */
+    .btn-whatsapp {
+      background-color: #25D366;
+      border-color: #25D366;
+      color: white;
+      transition: 0.3s;
+    }
+    .btn-whatsapp:hover {
+      background-color: #1da851;
+      border-color: #1da851;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(37,211,102,0.3);
+      color: white;
+    }
+    .btn-call {
+      background-color: #007bff;
+      border-color: #007bff;
+      transition: 0.3s;
+    }
+    .btn-call:hover {
+      background-color: #0062cc;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,123,255,0.3);
+    }
+    .hero-section {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      padding: 90px 0 80px;
+      border-bottom-left-radius: 2rem;
+      border-bottom-right-radius: 2rem;
+    }
+    .section-title {
+      font-weight: 700;
+      font-size: 2.2rem;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 2rem;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      width: 70%;
+      height: 4px;
+      background: #25D366;
+      bottom: -12px;
+      left: 15%;
+      border-radius: 5px;
+    }
+    .service-card {
+      transition: all 0.25s ease;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      background: white;
+      border: none;
+      cursor: default;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
+      border-bottom: 2px solid #25D366;
+    }
+    .portfolio-card {
+      transition: 0.3s;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      height: 100%;
+      background: white;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.2);
+    }
+    .portfolio-img {
+      height: 200px;
+      object-fit: cover;
+      width: 100%;
+      transition: 0.5s;
+    }
+    .portfolio-card:hover .portfolio-img {
+      transform: scale(1.02);
+    }
+    .testimonial-card {
+      background: #f8f9fc;
+      border-radius: 28px;
+      padding: 1.8rem;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+      transition: 0.2s;
+      border: 1px solid #eef2f6;
+    }
+    .testimonial-card i {
+      color: #ffc107;
+    }
+    .contact-section {
+      background: #f1f5f9;
+      border-radius: 2rem;
+      margin-top: 20px;
+    }
+    .footer {
+      background: #0f2027;
+      color: #ddd;
+      border-top-left-radius: 2rem;
+      border-top-right-radius: 2rem;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.6rem;
+      letter-spacing: -0.5px;
+    }
+    .nav-link {
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .nav-link:hover {
+      color: #25D366 !important;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25D366;
+      border-radius: 50px;
+      padding: 12px 18px;
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 99;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+    .whatsapp-float i {
+      font-size: 1.5rem;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .whatsapp-float:hover {
+      background-color: #1da851;
+      transform: scale(1.02);
+      color: white;
+    }
+    @media (max-width: 768px) {
+      .hero-section {
+        padding: 60px 0;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+  <div class="container">
+    <a class="navbar-brand fw-bold text-dark" href="#">✨ Kartikesh Web Studio</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-2">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section id="home" class="hero-section">
+  <div class="container text-center">
+    <h1 class="display-4 fw-bold">We Create Websites <br> That <span style="color:#25D366;">Help Small Businesses Grow</span></h1>
+    <p class="lead mt-3">Custom, professional, and responsive websites for restaurants, travel, hotels, portfolios, and local businesses.</p>
+    <div class="mt-4 d-flex flex-wrap justify-content-center gap-3">
+      <a href="https://wa.me/917666768608?text=Hi!%20I%20am%20interested%20in%20your%20website%20services.%20Please%20share%20details!" target="_blank" class="btn btn-whatsapp btn-lg px-4"><i class="fab fa-whatsapp me-2"></i>WhatsApp Now</a>
+      <a href="tel:+917666768608" class="btn btn-call btn-lg px-4"><i class="fas fa-phone-alt me-2"></i>Call Direct</a>
+    </div>
+    <p class="mt-4 small opacity-75">⭐ 15+ websites delivered | Quick turnaround | 100% satisfaction</p>
+  </div>
+</section>
+
+<!-- Services Section (10 Types) -->
+<section id="services" class="py-5">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-title">What I Build For You</h2>
+      <p class="text-muted mb-5">Tailored websites for every niche — modern, mobile-first, and result-driven</p>
+    </div>
+    <div class="row g-4">
+      <!-- 1. Restaurant / Cafe -->
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card card h-100 p-3 text-center">
+          <div class="card-body"><i class="fas fa-utensils fa-3x text-success mb-3"></i><h5 class="card-title fw-bold">Restaurant / Cafe</h5><p class="card-text text-muted">Menu display, table booking, food gallery, WhatsApp order integration.</p></div>
+        </div>
+      </div>
+      <!-- 2. Travel / Tour -->
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card card h-100 p-3 text-center">
+          <div class="card-body"><i class="fas fa-plane-departure fa-3x text-primary mb-3"></i><h5 class="card-title fw-bold">Travel / Tour</h5><p class="card-text text-muted">Tour packages, destination highlights, enquiry forms, travel blogs.</p></div>
+        </div>
+      </div>
+      <!-- 3. Hotel / Resort -->
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card card h-100 p-3 text-center">
+          <div class="card-body"><i class="fas fa-hotel fa-3x text-info mb-3"></i><h5 class="card-title fw-bold">Hotel / Resort</h5><p class="card-text text-muted">Room availability, amenities, online booking, photo galleries.</p></div>
+        </div>
+      </div>
+      <!-- 4. Event / Wedding -->
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card card h-100 p-3 text-center">
+          <div class="card-body"><i class="fas fa-ring fa-3x text-danger mb-3"></i><h5 class="card-title fw-bold">Event / Wedding</h5><p class="card-text text-muted">Event portfolios, invitation details, RSVP & contact forms.</p></div>
+        </div>
+      </div>
+      <!-- 5. Portfolio / Developer -->
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card card h-100 p-3 text-center">
+          <div class="card-body"><i class="fas fa-laptop-code fa-3x text-dark mb-3"></i><h5 class="card-title fw-bold">Portfolio / Developer</h5><p class="card-text text-muted">Personal portfolio, project showcase, skill highlights, blog.</p></div>
+        </div>
+      </div>
+      <!-- 6. Small Shop / Local Business -->
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card card h-100 p-3 text-center">
+          <div class="card-body"><i class="fas fa-store fa-3x text-warning mb-3"></i><h5 class="card-title fw-bold">Small Shop / Local</h5><p class="card-text text-muted">Digital presence for local stores, catalogs, contact & location.</p></div>
+        </div>
+      </div>
+      <!-- 7. Blog / Informational -->
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card card h-100 p-3 text-center">
+          <div class="card-body"><i class="fas fa-blog fa-3x text-secondary mb-3"></i><h5 class="card-title fw-bold">Blog / Informational</h5><p class="card-text text-muted">Clean blog layout, SEO ready, category pages & newsletter.</p></div>
+        </div>
+      </div>
+      <!-- 8. Online Product / E-commerce -->
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card card h-100 p-3 text-center">
+          <div class="card-body"><i class="fas fa-shopping-cart fa-3x text-success mb-3"></i><h5 class="card-title fw-bold">Online Product / E‑com</h5><p class="card-text text-muted">Product listings, cart, payment gateway integration (basic).</p></div>
+        </div>
+      </div>
+      <!-- 9. Special Offers / Promotions -->
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card card h-100 p-3 text-center">
+          <div class="card-body"><i class="fas fa-tags fa-3x text-orange mb-3" style="color:#e67e22;"></i><h5 class="card-title fw-bold">Special Offers / Promo</h5><p class="card-text text-muted">Landing pages for campaigns, coupon codes, lead forms.</p></div>
+        </div>
+      </div>
+      <!-- 10. Educational / Coaching -->
+      <div class="col-lg-3 col-md-6">
+        <div class="service-card card h-100 p-3 text-center">
+          <div class="card-body"><i class="fas fa-chalkboard-user fa-3x text-info mb-3"></i><h5 class="card-title fw-bold">Educational / Coaching</h5><p class="card-text text-muted">Course outlines, student dashboard, online registration.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio Section (Screenshots / Demo Projects) -->
+<section id="portfolio" class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-title">My Recent Work</h2>
+      <p class="text-muted mb-5">Real projects — modern design, fully responsive & client-approved</p>
+    </div>
+    <div class="row g-4">
+      <!-- Portfolio card 1 - Restaurant -->
+      <div class="col-md-6 col-lg-4">
+        <div class="portfolio-card card h-100">
+          <img src="https://picsum.photos/id/30/400/250" class="portfolio-img" alt="Restaurant website preview">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">🍽️ The Grand Bistro</h5>
+            <p class="card-text text-muted">Restaurant website with online menu, reservation system & WhatsApp ordering.</p>
+            <a href="https://wa.me/917666768608?text=Hi!%20I%20love%20your%20Restaurant%20project%20(The%20Grand%20Bistro).%20I%20need%20a%20similar%20website." target="_blank" class="btn btn-sm btn-outline-success rounded-pill">Get this style <i class="fab fa-whatsapp ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Portfolio card 2 - Travel -->
+      <div class="col-md-6 col-lg-4">
+        <div class="portfolio-card card h-100">
+          <img src="https://picsum.photos/id/15/400/250" class="portfolio-img" alt="Travel agency website">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">✈️ Himalaya Nomads</h5>
+            <p class="card-text text-muted">Travel tour packages, adventure gallery, enquiry form integrated.</p>
+            <a href="https://wa.me/917666768608?text=I%20am%20interested%20in%20Travel%20website%20like%20Himalaya%20Nomads.%20Please%20share%20price." target="_blank" class="btn btn-sm btn-outline-success rounded-pill">Inquiry <i class="fab fa-whatsapp ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Portfolio card 3 - Hotel/Resort -->
+      <div class="col-md-6 col-lg-4">
+        <div class="portfolio-card card h-100">
+          <img src="https://picsum.photos/id/104/400/250" class="portfolio-img" alt="Luxury resort website">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">🏝️ Bluewave Resort</h5>
+            <p class="card-text text-muted">Resort website with room showcases, booking inquiry & photo gallery.</p>
+            <a href="https://wa.me/917666768608?text=Hi!%20I%20need%20a%20Hotel%20Resort%20website%20similar%20to%20Bluewave%20Resort.%20Let's%20discuss." target="_blank" class="btn btn-sm btn-outline-success rounded-pill">Get quote <i class="fab fa-whatsapp ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Portfolio card 4 - Wedding/Event -->
+      <div class="col-md-6 col-lg-4">
+        <div class="portfolio-card card h-100">
+          <img src="https://picsum.photos/id/29/400/250" class="portfolio-img" alt="Wedding planner website">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">💍 Eternal Vows</h5>
+            <p class="card-text text-muted">Wedding event website, portfolio gallery, vendor section & RSVP.</p>
+            <a href="https://wa.me/917666768608?text=I%20am%20planning%20an%20event%20website%20like%20Eternal%20Vows.%20Please%20contact%20me." target="_blank" class="btn btn-sm btn-outline-success rounded-pill">Contact me <i class="fab fa-whatsapp ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Portfolio card 5 - Portfolio / Developer -->
+      <div class="col-md-6 col-lg-4">
+        <div class="portfolio-card card h-100">
+          <img src="https://picsum.photos/id/0/400/250" class="portfolio-img" alt="Developer portfolio">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">👨‍💻 Alex's Portfolio</h5>
+            <p class="card-text text-muted">Modern developer portfolio, project grid & contact form ready.</p>
+            <a href="https://wa.me/917666768608?text=I%20need%20a%20personal%20portfolio%20website%20like%20the%20one%20in%20your%20gallery." target="_blank" class="btn btn-sm btn-outline-success rounded-pill">Let's build <i class="fab fa-whatsapp ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- Portfolio card 6 - E-commerce concept -->
+      <div class="col-md-6 col-lg-4">
+        <div class="portfolio-card card h-100">
+          <img src="https://picsum.photos/id/20/400/250" class="portfolio-img" alt="E-commerce store">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">🛍️ Urban Store</h5>
+            <p class="card-text text-muted">Clean online store layout, product showcase & cart integration.</p>
+            <a href="https://wa.me/917666768608?text=I%20want%20an%20e-commerce%20site%20like%20Urban%20Store.%20Share%20your%20portfolio%20pricing." target="_blank" class="btn btn-sm btn-outline-success rounded-pill">Get started <i class="fab fa-whatsapp ms-1"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <a href="https://wa.me/917666768608?text=Hi!%20I%20saw%20your%20portfolio%20and%20I'd%20like%20to%20discuss%20my%20website%20project." class="btn btn-whatsapp px-4 py-2"><i class="fab fa-whatsapp me-2"></i> Request Custom Demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials / Reviews -->
+<section id="testimonials" class="py-5">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-title">Trusted by Business Owners</h2>
+      <p class="text-muted mb-5">What clients say about my work & professionalism</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-6">
+        <div class="testimonial-card">
+          <div class="d-flex gap-2 mb-2">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="fst-italic">“He built a complete restaurant website for my cafe within 3 days. WhatsApp ordering feature brought more customers. Highly recommended!”</p>
+          <h6 class="fw-bold mt-2">— Rahul S., Cafe Owner</h6>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6">
+        <div class="testimonial-card">
+          <div class="d-flex gap-2 mb-2">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="fst-italic">“Professional travel website design with amazing responsiveness. My tour bookings increased after launching the site. Great support.”</p>
+          <h6 class="fw-bold mt-2">— Meera J., Travel Agency</h6>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-6 mx-auto">
+        <div class="testimonial-card">
+          <div class="d-flex gap-2 mb-2">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="fst-italic">“Delivered my portfolio website faster than expected. Clean design and easy to update. Will hire again for future projects.”</p>
+          <h6 class="fw-bold mt-2">— Ankit P., Freelance Designer</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section + WhatsApp/Call + Simple Form (opens WhatsApp) -->
+<section id="contact" class="py-5">
+  <div class="container contact-section p-4 p-md-5 shadow-sm">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <h2 class="fw-bold">Let's Build Your <span style="color:#25D366;">Dream Website</span></h2>
+        <p class="mt-3">📞 Call / WhatsApp for instant quote or fill the form — I'll reply within 2 hours.</p>
+        <div class="mt-4 d-flex flex-column gap-3">
+          <a href="https://wa.me/917666768608?text=Hello!%20I%20need%20a%20professional%20website%20for%20my%20business." class="btn btn-whatsapp w-75 py-2 fw-bold"><i class="fab fa-whatsapp me-2"></i>Chat on WhatsApp</a>
+          <a href="tel:+917666768608" class="btn btn-outline-primary w-75 py-2 fw-bold"><i class="fas fa-phone-alt me-2"></i>Call +91 76667 68608</a>
+          <p class="text-muted small mt-2"><i class="far fa-envelope"></i> Email: business@webwizard.in (or WhatsApp preferred)</p>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="bg-white p-4 rounded-4 shadow-sm">
+          <h4 class="mb-3">Quick Enquiry</h4>
+          <form id="contactForm">
+            <div class="mb-3">
+              <label class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="nameInput" placeholder="e.g. Kartikesh Kolekar" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" id="phoneInput" placeholder="+91 7666768608" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Tell me about your website</label>
+              <textarea class="form-control" rows="3" id="msgInput" placeholder="Restaurant / Travel / Portfolio etc. + features you need"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success w-100"><i class="fab fa-whatsapp me-2"></i>Send via WhatsApp</button>
+          </form>
+          <p class="small text-muted mt-2">Clicking sends your enquiry directly to my WhatsApp</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer pt-5 pb-4 mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <h4 class="fw-bold">✨Kartikesh Web Studio</h4>
+        <p>Freelance web developer specialized in modern, responsive websites for small businesses & entrepreneurs.</p>
+        <div class="mt-3">
+          <a href="https://wa.me/917666768608" class="text-white me-3"><i class="fab fa-whatsapp fa-lg"></i></a>
+          <a href="https://www.instagram.com/kartikesh_kolekar1/"" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+          <a href="https://www.linkedin.com/in/kartikesh-kolekar-6984ba295" class="text-white"><i class="fab fa-linkedin fa-lg"></i></a>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#home" class="text-white-50 text-decoration-none">Home</a></li>
+          <li><a href="#services" class="text-white-50 text-decoration-none">Services</a></li>
+          <li><a href="#portfolio" class="text-white-50 text-decoration-none">Portfolio</a></li>
+          <li><a href="#contact" class="text-white-50 text-decoration-none">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Get in Touch</h5>
+        <p><i class="fab fa-whatsapp me-2"></i> +91 7666768608<br>
+        <i class="far fa-envelope me-2"></i> kartikeshkolekar5400@gmail.com<br>
+        <i class="fas fa-globe me-2"></i> Based in India | Worldwide clients</p>
+      </div>
+    </div>
+    <hr class="bg-secondary mt-4">
+    <p class="text-center text-white-50 small mb-0">© 2026 Kartikesh Web Studio — Freelance Web Developer | All rights reserved</p>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp button (optional, for convenience) -->
+<a href="https://wa.me/917666768608?text=Hi!%20I%20saw%20your%20ad%20website%20and%20need%20a%20website%20for%20my%20business." class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i> Need a site?
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Contact form handler: opens WhatsApp with pre-filled details
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    let name = document.getElementById('nameInput').value.trim();
+    let phone = document.getElementById('phoneInput').value.trim();
+    let message = document.getElementById('msgInput').value.trim();
+    if(name === "" || phone === "") {
+      alert("Please enter your name and phone number.");
+      return;
+    }
+    let finalMsg = `*New Website Enquiry*%0A%0A*Name:* ${encodeURIComponent(name)}%0A*Phone:* ${encodeURIComponent(phone)}%0A*Requirement:* ${encodeURIComponent(message || "Need website development service")}`;
+    let whatsappURL = `https://wa.me/917666768608?text=${finalMsg}`;
+    window.open(whatsappURL, '_blank');
+    // Optional reset
+    document.getElementById('contactForm').reset();
+  });
+</script>
+</body>
+</html>
